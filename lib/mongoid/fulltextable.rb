@@ -4,7 +4,7 @@ require 'active_support/concern'
 require 'core_ext/string'
 
 module Mongoid
-  
+
   module Fulltextable
 
     extend ActiveSupport::Concern
@@ -54,7 +54,7 @@ module Mongoid
       def update_keywords_from_fields
         keywords = index_fields.map do |field|
           value      = self.send(field).to_s
-          simplified = value.without_accents
+          simplified = value.without_accents if value.respond_to?(:without_accents)
 
           simplified == value ? value : [value, simplified]
         end.reject(&:blank?).compact.flatten.uniq
@@ -71,11 +71,15 @@ module Mongoid
       end
 
       def indexes(*args)
-        self._keywords += args.compact.uniq
+        keywords = args.reject(&:blank?).compact.uniq.map do |value|
+          simplified = value.without_accents if value.respond_to?(:without_accents)
+          simplified == value ? value : [value, simplified]
+        end.flatten
+        self._keywords += keywords
       end
 
     end
 
   end
-  
+
 end
