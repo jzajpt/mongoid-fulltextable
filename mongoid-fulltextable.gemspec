@@ -6,7 +6,7 @@ Gem::Specification.new do |s|
   s.name        = "mongoid-fulltextable"
   s.version     = Mongoid::Fulltextable::VERSION
   s.platform    = Gem::Platform::RUBY
-  s.authors     = ["Jiří Zajpt"]
+  s.authors     = ["Jiri Zajpt"]
   s.email       = ["jzajpt@blueberry.cz"]
   s.homepage    = "http://rubygems.org/gems/mongoid-fulltextable"
   s.summary     = %q{Simple & stupid 'fulltext' searching for Mongoid.}
