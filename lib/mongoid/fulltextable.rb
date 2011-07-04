@@ -72,10 +72,11 @@ module Mongoid
 
       def indexes(*args)
         keywords = args.reject(&:blank?).compact.uniq.map do |value|
+          value      = value.to_s
           simplified = value.without_accents if value.respond_to?(:without_accents)
           simplified == value ? value : [value, simplified]
-        end.flatten
-        self._keywords += keywords
+        end
+        self._keywords += keywords.flatten.compact
       end
 
     end
