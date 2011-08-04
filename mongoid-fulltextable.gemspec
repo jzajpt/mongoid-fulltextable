@@ -13,7 +13,7 @@ Gem::Specification.new do |s|
   s.description = %q{Simple & stupid 'fulltext' searching for Mongoid.}
 
   s.rubyforge_project = "mongoid-fulltextable"
-  
+
   s.add_dependency 'activesupport', '~> 3.0.1'
   s.add_dependency 'unicode_utils', '~> 1.0.0'
 
