@@ -39,6 +39,11 @@ module Mongoid
 
     module InstanceMethods
 
+      def update_keywords!
+        self.update_keywords
+        self.save!
+      end
+
       protected
 
       def update_keywords
