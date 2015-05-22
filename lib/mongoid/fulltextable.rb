@@ -13,8 +13,6 @@ module Mongoid
 
       field :_keywords, :type => Array, :accessible => false
 
-      index :_keywords
-
       scope :fulltext, lambda { |str| where(:_keywords => /#{Regexp.escape(str)}/i) }
 
     end
